@@ -1,0 +1,38 @@
+<form>
+
+    <ba-card>
+        <div class="form-group">
+            <label>Item Name  </label>
+            <input type="text" id="itemname" class="form-control">
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Item Type</label>
+
+            <select name="itemtype" ng-model="itemtype" class="form-control">
+                                      
+                                      <option value="Shortterm">Stationary</option>
+                                     <option value="Middleterm">Electronics</option>
+                                      <option value="Longterm">Long term item</option>
+                                      
+                                    
+                      </select>
+
+        </div>
+        <br>
+
+        <div class="form-group">
+            <label>Number of items needed  </label>
+            <input type="text" class="form-control" id="numberofitems" placeholder="1">
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Reason for the request</label>
+            <textarea name="requestreason" id="requestreason" class="form-control"></textarea>
+        </div>
+        <br>
+
+        <button type="submit " class="submit " class="btn btn-primary">Request Item</button>
+    </ba-card>
+
+</form>
