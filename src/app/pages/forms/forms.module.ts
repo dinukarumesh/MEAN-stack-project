@@ -12,6 +12,9 @@ import { Inputs } from './components/inputs';
 import { Layouts } from './components/layouts';
 import { ShortTermItem } from './components/insertItems/short-term-item';
 import { MiddleTermItem } from './components/insertItems/middle-term-item';
+import { LongTermItem } from './components/insertItems/long-term-item';
+//import { QRCodeComponent } from 'ngx-qrcode';
+
 
 
 import { StandardInputs } from './components/inputs/components/standardInputs';
@@ -27,6 +30,12 @@ import { HorizontalForm } from './components/layouts/components/horizontalForm';
 import { BasicForm } from './components/layouts/components/basicForm';
 import { WithoutLabelsForm } from './components/layouts/components/withoutLabelsForm';
 
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { FlashMessagesModule  } from 'angular2-flash-messages';
+
+
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -34,13 +43,18 @@ import { WithoutLabelsForm } from './components/layouts/components/withoutLabels
     AppTranslationModule,
     NgaModule,
     NgbRatingModule,
-    routing
+    routing,
+    NgxQRCodeModule,
+    FlashMessagesModule,
+
+ 
   ],
   declarations: [
     Layouts,
     Inputs,
     ShortTermItem,
     MiddleTermItem,
+    LongTermItem,
     Forms,
     StandardInputs,
     ValidationInputs,

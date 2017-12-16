@@ -84,6 +84,14 @@ export const PAGES_MENU = [
               }
             }
           },
+          {
+            path: 'longTermItemInsert',
+            data: {
+              menu: {
+                title: 'Long Term Item Insert',
+              }
+            }
+          }
           
         ]
       }, 
