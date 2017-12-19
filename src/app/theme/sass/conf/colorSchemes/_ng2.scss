@@ -52,22 +52,7 @@ $activelink: #285eb8;
 $hoverlink: darken($activelink, 20%);
 // main background
 @mixin body-bg() {
-<<<<<<< HEAD
-    background-color: $body-bg;
-    $mainBgUrl: $assets-root + $images-root + 'sky-bg.jpg';
-    &::before {
-        content: '';
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background: url($mainBgUrl) no-repeat center center;
-        background-size: cover;
-        will-change: transform;
-        z-index: 0;
-    }
-=======
+
   background-color: $body-bg;
 
   $mainBgUrl: $assets-root + $images-root + 'invent-bg.jpg';
@@ -84,7 +69,7 @@ $hoverlink: darken($activelink, 20%);
     will-change: transform;
     z-index: 0;
   }
->>>>>>> 86e92f14d080e30a7e115d276f3f36cf6fac80ae
+
 }
 
 // additional background if you want another layer
