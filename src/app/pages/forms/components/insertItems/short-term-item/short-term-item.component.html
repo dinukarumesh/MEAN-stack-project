@@ -16,8 +16,8 @@
     <div class="btn-group-example">
       <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-info btn-lg" href="#">Short Term Item</button>
-        <button type="button" class="btn btn-info btn-lg" [routerLink]="['/middleTermItem']">Middle Term Item</button>
-        <button type="button" class="btn btn-info btn-lg" [routerLink]="['/longTermItem']">Long Term Item</button>
+        <button type="button" class="btn btn-default btn-lg" [routerLink]="['/pages/forms/middleTermItemInsert']">Middle Term Item</button>
+        <button type="button" class="btn btn-default btn-lg" [routerLink]="['/pages/forms/longTermItemInsert']">Long Term Item</button>
       </div>
     </div>
   </ba-card>
@@ -26,6 +26,7 @@
   <div>
     <div class="col-md-6">
       <ba-card cardTitle="Short Term Insert" baCardClass="with-scroll">
+        <p>{{itemDate | date:'mediumDate'}}</p>
         <div class='panel-body'>
           <form class='form-horizontal' role='form' (submit)="onShortTermItemSubmit()">
 
@@ -114,11 +115,9 @@
           </form>
         </div>
       </ba-card>
+
     </div>
+      
+
   </div>
-
-
-
-
-
 </div>

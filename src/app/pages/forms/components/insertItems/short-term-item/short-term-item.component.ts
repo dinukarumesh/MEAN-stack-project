@@ -13,9 +13,9 @@ export class ShortTermItem implements OnInit {
   //item_id: string;
   itemType: string;
   itemQuntity : string;
-  //item_date : string;
   itemWarehouse : string;
   itemDescription : string;  
+  itemDate: Date;
 
   constructor(
     //private flashMessage:FlashMessagesService,
@@ -24,6 +24,7 @@ export class ShortTermItem implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.itemDate = new Date();
   }
 
   onShortTermItemSubmit(){
@@ -32,7 +33,8 @@ export class ShortTermItem implements OnInit {
       itemType: this.itemType,
       itemQuntity: this.itemQuntity,
       itemWarehouse: this.itemWarehouse,
-      itemDescription: this.itemDescription
+      itemDescription: this.itemDescription,
+      itemDate: this.itemDate
 
     }
 

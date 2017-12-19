@@ -25,4 +25,23 @@ export class InsertItemsService {
   }
 
 
+  insertLongTermItem(longTermItem){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/itemInsert/longTermInsert', longTermItem,{headers: headers})
+      .map(res => res.json());
+  }
+
+  getMiddleTermItem() {
+    return new Promise((resolve, reject) => {
+      this.http.get('http://localhost:3000/itemInsert/showMiddleTermItems')
+        .map(response => response.json())
+        .subscribe(response => {
+          resolve(response);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
 }

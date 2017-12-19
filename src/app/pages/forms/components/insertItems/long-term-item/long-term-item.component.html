@@ -1,192 +1,159 @@
-<!-- <head>
-  <link href='../../../../theme/bootstrap.min.css' rel='stylesheet' type='text/css'>
-</head> -->
-<form>
-  <fieldset>
-        
-    <ul class="nav nav-tabs">
-      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link" data-toggle="tab" [routerLink]="['/shortTermItem']">Short Term</a>
-      </li>
-      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link" data-toggle="tab" [routerLink]="['/middleTermItem']">Middle Term</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#">Long Term</a>
-      </li>
-    </ul>
+<div class="widgets">
 
 
-    <div class='panel-body'>
-      <form class='form-horizontal' role='form'>
+  <ba-card cardTitle="Insert Items" baCardClass="with-scroll">
+    <div class="btn-group-example">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-default btn-lg" [routerLink]="['/pages/forms/shortTermItemInsert']">Short Term Item</button>
+        <button type="button" class="btn btn-default btn-lg" [routerLink]="['/pages/forms/middleTermItemInsert']">Middle Term Item</button>
+        <button type="button" class="btn btn-info btn-lg" href="#">Long Term Item</button>
+      </div>
+    </div>
+  </ba-card>
+
+  <div class="row">
+    <div class="col-md-6">
+      <ba-card cardTitle="Long Term Insert" baCardClass="with-scroll">
+        <p>{{itemDate | date:'mediumDate'}}</p>
+        <div class='panel-body'>
+          <form class='form-horizontal' role='form' (submit)="onLongTermItemSubmit()">
 
 
-
-
-        <div class='form-group'>
-          <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Item Name</label>
-          <div class='col-md-8'>
-            <div class='col-md-6 indent-small'>
-              <div class='form-group'>
-                <input class='form-control' id='id_item_name' placeholder='Item Name' type='text'>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class='form-group'>
-          <label class='control-label col-md-2 col-md-offset-2'>Item Type</label>
-          <div class='col-md-8'>
-            <div class='col-md-3'>
-              <div class='form-group internal'>
-                <select class='form-control' [(ngModel)]="itemType" name="itemType" placeholder='Item type'>
-                  <option>Laptop</option>
-                  <option>Headset</option>
-                  <option>Dekstop</option>
-                </select>
-              </div>
+            <div class='form-group'>
+              <label>Item Name</label>
+              <input class='form-control' type='text' [(ngModel)]="itemName" name="itemName" placeholder='Item Name'>
             </div>
 
-            <div class='col-md-8'>
-              <div class='col-md-4'>
-                <div class='form-group internal'>
-                  <select class='form-control' [(ngModel)]="itemBrand" name="itemBrand" placeholder='Item Brand'>
-                    <option>HP</option>
-                    <option>Dell</option>
-                    <option>Asus</option>
-                    <option>Acer</option>
-                  </select>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Item Type</label>
+                  <div>
+                    <select class='form-control' [(ngModel)]="itemType" name="itemType" placeholder='Item type'>
+                      <option>Laptop</option>
+                      <option>Headset</option>
+                      <option>Dekstop</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Item Brand</label>
+                  <div>
+                    <select class='form-control' [(ngModel)]="itemBrand" name="itemBrand">
+                      <option>HP</option>
+                      <option>Dell</option>
+                      <option>Asus</option>
+                      <option>Acer</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
 
-        <div class='form-group'>
-          <label class='control-label col-md-2 col-md-offset-2'>Item Quantity</label>
-          <div class='col-md-8'>
-            <div class='col-md-3 indent-small'>
-              <div class='form-group'>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Item Quantity</label>
                 <input class='form-control' type='number' [(ngModel)]="itemQuantity" name="itemQuantity" placeholder='Item Quantity' min="0">
               </div>
             </div>
-          </div>
-        </div>
 
-
-
-        <!-- <div class='form-group'>
-              <label class='control-label col-md-2 col-md-offset-2' for='date'>Date</label>
-              <div class='col-md-7'>
-                <div class='col-md-3'>
-                  <input id="date" type="date">
-                </div>
-                <div class='col-md-9'>
-                  <div class='form-group internal'>
-                    <label class='control-label col-md-5' for='id_item_id'>Date from System</label>
-                    <div class='make-switch' data-off-label='NO' data-on-label='YES' id='id_item_id'>
-                      <input id='id_item_id' type='checkbox' value='check_auto_date'>
+            <!-- <div class='form-group'>
+                <label class='control-label col-md-2 col-md-offset-2' for='date'>Date</label>
+                <div class='col-md-7'>
+                  <div class='col-md-3'>
+                    <input id="date" type="date">
+                  </div>
+                  <div class='col-md-9'>
+                    <div class='form-group internal'>
+                      <label class='control-label col-md-5' for='id_item_id'>Date from System</label>
+                      <div class='make-switch' data-off-label='NO' data-on-label='YES' id='id_item_id'>
+                        <input id='id_item_id' type='checkbox' value='check_auto_date'>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div> -->
-
-        <div class='form-group'>
-          <label class='control-label col-md-2 col-md-offset-2' for='id_invoice_number'>Invoice Number</label>
-          <div class='col-md-8'>
-            <div class='col-md-3 indent-small'>
+              </div> -->
+            <div class="col-sm-6">
               <div class='form-group'>
-                <input class='form-control' id='id_invoice_number' placeholder='Invoice Number' type='text'>
+                <label>Invoice Number</label>
+                <input class='form-control' type='text' [(ngModel)]="invoiceNumber" name="invoiceNumber" placeholder='Invoice Number'>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class='form-group'>
-          <label class='control-label col-md-2 col-md-offset-2' for='id_warranty_type'>Warranty</label>
-          <div class='col-md-8'>
-            <div class='col-md-2'>
-              <div class='form-group internal'>
-                <select class='form-control' id='id_warranty_type'>
-                  <option>Years</option>
-                  <option>Months</option>
-                  <option>Days</option>
-                </select>
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Warranty</label>
+                  <div>
+                    <select class='form-control' [(ngModel)]="warrantyType" name="warrantyType" placeholder='Warranty Type'>
+                      <option>Years</option>
+                      <option>Months</option>
+                      <option>Days</option>
+                    </select>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class='col-md-8'>
-              <div class='form-group internal'>
-                <div class='col-md-8'>
-                  <div class='col-md-3 indent-small'>
-                    <div class='form-group'>
-                      <input class='form-control' id='id_warranty_quntity' placeholder='0' type='number' min="0">
-                    </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label>.</label>
+                  <div>
+                    <input class='form-control' [(ngModel)]="warrantyQuantity" name="warrantyQuantity" placeholder='0' type='number' min="0">
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-      </form>
-    </div>
-  </fieldset>
-</form> 
+            <hr>
 
-<form>
-  <fieldset>
-    <div class='panel-body'>
-      <form class='form-horizontal' role='form'>
-
-        <div class='form-group'>
-          <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Reference ID</label>
-          <div class='col-md-6'>
-            <div class='col-md-6 indent-small'>
+            <div class="col-sm-6">
               <div class='form-group'>
-                <input class='form-control' id='id_item_reference_id' placeholder='Reference Id' type='text'>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class='form-group'>
-          <label class='control-label col-md-2 col-md-offset-2' for='id_warehouse'>Warehouse</label>
-          <div class='col-md-8'>
-            <div class='col-md-3'>
-              <div class='form-group internal'>
-                <select class='form-control' id='id_warehouse'>
+                <label>Warehouse</label>
+                <select class='form-control' [(ngModel)]="itemWarehouse" name="itemWarehouse">
                   <option>Warehouse 1</option>
                   <option>Warehouse 2</option>
                 </select>
               </div>
             </div>
-          </div>
+
+            <div class="form-group">
+              <label>Description</label>
+              <div class='col-md-13'>
+                <textarea class='form-control' type='text' [(ngModel)]="itemDescription" name="itemDescription" placeholder='Item Description'
+                  rows='3'></textarea>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-2">
+                <div class="form-group">
+                  <input type="submit" class="btn btn-primary" value="Submit">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <input type="cancel" class="btn btn-primary" value="Cancel">
+                </div>
+              </div>
+            </div>
+
+
+
+          </form>
         </div>
-
-
-
-        <div class='form-group'>
-          <label class='control-label col-md-2 col-md-offset-2' for='id_item_description'>Description</label>
-          <div class='col-md-6'>
-            <textarea class='form-control' id='id_item_description' placeholder='Additional Description' rows='3'></textarea>
-          </div>
-        </div>
-
-
-        <div class='form-group'>
-          <div class='col-md-offset-4 col-md-1'>
-            <input type="submit" class="btn btn-primary" value="Submit">
-          </div>
-          <div class='col-md-3'>
-            <input type="submit" class="btn btn-primary" value="Cancel">
-          </div>
-        </div>
-
-      </form>
+      </ba-card>
     </div>
-  </fieldset>
-</form>
+    <div class="col-md-6">
+      <ba-card cardTitle="QR Generate" baCardClass="with-scroll">
+        <div class="col-sm-4 col-6">
+          <button type="button" class="btn btn-info btn-lg">QR Generate</button>
+        </div>
+      </ba-card>
+    </div>
+
+
+  </div>
+</div>
