@@ -21,6 +21,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
       {path: 'forms', loadChildren: './forms/forms.module#FormsModule' },
+      {path: 'item-allocation', loadChildren: './item-allocation/item-allocation.module#ItemAllocationModule' },
       { path: 'request-report', loadChildren: './request-report/request-report.module#RequestReportModule' }
       
     ]

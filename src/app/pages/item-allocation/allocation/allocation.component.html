@@ -1,3 +1,32 @@
-<p>
-  allocation works!
-</p>
+<form name="reportitem" (ngSubmit)="saveallocationdata()">
+
+    <ba-card>
+        <div class="form-group">
+            <label>Item ID</label>
+            <input type="text" class="form-control" (keyup)="getItem()" placeholder="Enter Item ID" [(ngModel)]="itemId" name="itemId">
+
+        </div>
+        <div class="form-group">
+            <label f>Item Name</label>
+            <input type="text" class="form-control" placeholder="Enter Item Name" [(ngModel)]="itemName" name="itemName">
+        </div>
+        <div class="form-group">
+            <label>Enter the User Details to Allocate the Above Item</label>
+        </div>
+        <div class="form-group">
+            <label>User ID</label>
+            <input type="text" class="form-control" [(ngModel)]="userId" name="userId" placeholder="Enter User ID">
+        </div>
+        <div class="form-group">
+            <label>User Name</label>
+            <input type="text" class="form-control" [(ngModel)]="userName" name="userName" placeholder="Enter User Name">
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Allocate</button>
+    </ba-card>
+
+
+
+
+</form>

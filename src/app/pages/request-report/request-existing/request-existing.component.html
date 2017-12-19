@@ -1,71 +1,50 @@
-<form id="existingitemrequest">
-    <div ng-app="myApp" ng-controller="myCtrl">
+<form (ngSubmit)="saverequestexistingdata()">
+    <ba-card>
+        <div ng-app="myApp" ng-controller="myCtrl">
 
-        <div class="form-group">
-            <label>Item Type</label>
-
-            <select name="itemtype" ng-model="itemtype">
+            <div class="form-group">
+                <label>Item Type</label>
+                <select [(ngModel)]="itemType" name="itemType" class="form-control">
                                   
-                                  <option value="Shortterm">Stationary</option>
-                                 <option value="Middleterm">Electronics</option>
-                                  <option value="Longterm">Long term item</option>
+<option value="Shortterm">Stationary</option>
+<option value="Middleterm">Electronics</option>
+<option value="Longterm">Long term item</option>
                                   
                                 
-                  </select>
+</select>
+
+            </div>
+
+            <br>
+            <div class="form-group">
+                <label>Item Name  </label>
+                <input type="text" (keyup)="getItem()" class="form-control" [(ngModel)]="itemName" name="itemName">
+            </div>
+            <br>
+            <div class="form-group">
+                <label>Item ID    </label>
+                <input class="form-control" type="text" [(ngModel)]="itemId" name="itemId">
+            </div>
+            <br>
+            <div class="form-group">
+                <label>Availablity </label>
+                <input class="form-control" type="text" disabled [(ngModel)]="availability" name="availability">
+            </div>
+            <br>
+            <div class="form-group">
+                <label>Quantity Needed</label>
+                <input class="form-control" type="text" [(ngModel)]="quantity" name="quantity">
+            </div>
+            <br> If Assigning To Another:
+            <br>
+            <div class="form-group">
+                <label>User Name  </label>
+                <input class="form-control" type="text" [(ngModel)]="userName" name="userName">
+            </div>
+            <br>
+
+            <button type="submit " class="btn btn-primary">Request Item</button>
 
         </div>
-
-        <br>
-        <div class="form-group">
-            <label>User Name  </label>
-            <input type="text" id="username">
-        </div>
-        <br>
-        <div class="form-group">
-            <label>User ID    </label>
-            <input type="text" id="userid">
-        </div>
-        <br>
-        <div class="form-group">
-            <label>Item Name  </label>
-            <input type="text" id="itemname">
-        </div>
-        <br>
-        <div class="withscan">
-            <label>Item ID    </label>
-            <input type="text" id="itemid" class="scanbutton" ng-model="requestexisting.itemid">
-            <input type="button" class="scanbutton" id="qr" value="Scan QR" ng-click="scan()">
-        </div>
-        <br>
-        <div class="form-group">
-            <label>Availablity </label>
-            <input type="text" disabled>
-        </div>
-        <br>
-        <div class="form-group">
-            <label>Quantity </label>
-            <input type="text" id="requestquantity">
-        </div>
-        <br>
-        <div>
-            <label>Duration of Use</label>
-
-            <select name="duration" ng-model="duration">
-                          
-                          <option value="1month">1 Month</option>
-                          <option value="3months">3 Months</option>
-                          <option value="6months">6 Months</option>
-                          <option value="1year">1 Year</option>
-                        
-          </select>
-
-
-        </div>
-
-
-        <br>
-
-        <button type="submit " class="submit ">Request Item</button>
-
-    </div>
+    </ba-card>
 </form>

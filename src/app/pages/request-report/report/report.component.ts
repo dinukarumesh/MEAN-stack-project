@@ -1,4 +1,4 @@
-import { NgModule,Component,Pipe,OnInit } from '@angular/core';
+import { NgModule,Component,Pipe,OnInit,OnChanges,SimpleChanges} from '@angular/core';
 import { ReportItemService } from '../../../services/report-item.service'
 
 
@@ -7,11 +7,14 @@ import { ReportItemService } from '../../../services/report-item.service'
   templateUrl: './report.component.html'
 })
 
-export class ReportComponent implements OnInit {
-  
-  itemid:Number;
-  typeofdefect:String;
-  reportdescription:String;
+export class ReportComponent implements OnInit{
+
+data:any;
+  warrenty:any;
+  itemId:Number;
+  itemName:String;
+  reportDescription:String;
+
   constructor(public reportservice:ReportItemService) { }
 
 
@@ -20,13 +23,12 @@ export class ReportComponent implements OnInit {
   ngOnInit() {
   }
   
-  
-  savereportdata(){   
+    savereportdata(){   
   
   const reportitem = {
-    itemid:this.itemid,
-    typeofdefect:this.typeofdefect,
-    reportdescription:this.reportdescription
+    itemId:this.itemId,
+    itemName:this.itemName,
+    reportDescription:this.reportDescription
   };
 
 
@@ -34,6 +36,13 @@ export class ReportComponent implements OnInit {
     console.log(res);
   }); 
     
+  }
+
+  getItem(){
+    this.reportservice.getItemData(this.itemId).subscribe(data=>{
+      console.log(data);
+     
+    })
   }
 
 }

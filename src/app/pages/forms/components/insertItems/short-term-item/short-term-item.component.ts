@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidateService } from '../../../../../services/validate.service';
-import { FlashMessagesService } from 'angular2-flash-messages';
+
 import { Router } from '@angular/router';
 import { InsertItemsService } from '../../../../../services/insert-items.service';
 
@@ -18,7 +18,7 @@ export class ShortTermItem implements OnInit {
   itemDescription : string;  
 
   constructor(
-    private flashMessage:FlashMessagesService,
+    //private flashMessage:FlashMessagesService,
     private insertItemsService: InsertItemsService,
     private router: Router,
   ) { }

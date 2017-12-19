@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MiddleTermTermComponent } from './middle-term-term.component';
+import { ItemtypeComponent } from './itemtype.component';
 
-describe('MiddleTermTermComponent', () => {
-  let component: MiddleTermTermComponent;
-  let fixture: ComponentFixture<MiddleTermTermComponent>;
+describe('ItemtypeComponent', () => {
+  let component: ItemtypeComponent;
+  let fixture: ComponentFixture<ItemtypeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MiddleTermTermComponent ]
+      declarations: [ ItemtypeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MiddleTermTermComponent);
+    fixture = TestBed.createComponent(ItemtypeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

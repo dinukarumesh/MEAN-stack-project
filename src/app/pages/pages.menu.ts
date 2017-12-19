@@ -87,6 +87,46 @@ export const PAGES_MENU = [
           
         ]
       }, 
+
+
+      {
+        path: 'item-allocation',
+        data: {
+          menu: {
+            title: 'Item Allocation',
+            icon: 'ion-gear-a',
+            selected: false,
+            expanded: false,
+            order: 250,
+          }
+        },
+        children: [
+          {
+            path: 'allocation',
+            data: {
+              menu: {
+                title: 'Allocate Item',
+              }
+            }
+          },
+          {
+            path: 'availability',
+            data: {
+              menu: {
+                title: 'Available Items',
+              }
+            }
+          },
+          {
+            path: 'itemtype',
+            data: {
+              menu: {
+                title: 'Add New Item Types',
+              }
+            }
+          }
+        ]
+      }, 
       
       //extra
       
