@@ -1,24 +1,30 @@
-<form (ngSubmit)="savereportdata()" novalidate>
+<form name="reportitem" (ngSubmit)="savereportdata()">
 
     <ba-card>
         <div class="form-group">
             <label for="middleItemId">Item ID</label>
-            <input type="text" class="form-control" placeholder="Enter Item ID" [(ngModel)]="itemid" name="itemid">
+            <input type="text" (keyup)="getItem()" ng-show="" class="form-control" placeholder="Enter Item ID" [(ngModel)]="itemId" name="itemId">
+
         </div>
         <div class="form-group">
-            <label for="middleItemId">Type of Defect</label>
-            <input type="text" class="form-control" placeholder="Enter Item ID" [(ngModel)]="typeofdefect" name="typeofdefect">
+            <label for="middleItemName">Item Name</label>
+            <input type="text" class="form-control" placeholder="Enter Item Name" [(ngModel)]="itemName" name="itemName">
         </div>
+
         <div class="form-group">
-            <label for="warrentyPeriod">Warrenty</label>
-            <input type="date" readonly="" class="form-control">
+            <label for="warrentyUntil">Warrenty Until</label>
+            <input type="text" readonly="" class="form-control" placeholder="{{warrenty}}">
         </div>
 
         <div class="form-group">
             <label for="reportDescription">Description</label>
-            <textarea class="form-control" rows="3" [(ngModel)]="reportdescription" name="reportdescription"></textarea>
+            <textarea class="form-control" rows="3" [(ngModel)]="reportDescription" name="reportDescription"></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </ba-card>
+
+
+
+
 </form>

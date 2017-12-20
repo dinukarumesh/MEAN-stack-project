@@ -19,8 +19,6 @@ import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
 
-//services
-import{ReportItemService} from './services/report-item.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -48,6 +46,7 @@ export type StoreType = {
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    //FlashMessagesModule.forRoot(),
     NgaModule.forRoot(),
     NgbModule.forRoot(),
     PagesModule,
@@ -55,7 +54,7 @@ export type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     APP_PROVIDERS,
-    ReportItemService,
+   // ReportItemService,
     AuthService,
     InsertItemsService
   ]
