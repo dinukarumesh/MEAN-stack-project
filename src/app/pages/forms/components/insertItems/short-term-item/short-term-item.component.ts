@@ -8,7 +8,7 @@ import { InsertItemsService } from '../../../../../services/insert-items.service
   selector: 'app-short-term-item',
   templateUrl: './short-term-item.component.html',
 })
-export class ShortTermItem implements OnInit {
+export class ShortTermItem{
   itemName: string;
   //item_id: string;
   itemType: string;
@@ -16,6 +16,8 @@ export class ShortTermItem implements OnInit {
   itemWarehouse : string;
   itemDescription : string;  
   itemDate: Date;
+  userRole:string;
+  
 
   constructor(
     private flashMessage:FlashMessagesService,
@@ -25,7 +27,10 @@ export class ShortTermItem implements OnInit {
 
   ngOnInit() {
     this.itemDate = new Date();
+    var user = JSON.parse(localStorage.getItem('user'));
+    this.userRole = user.userRole;
   }
+  
 
   onShortTermItemSubmit(){
     const shortTermItem = {

@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
-
-import {GlobalState} from '../../../global.state';
+import { Component } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
+import { GlobalState } from '../../../global.state';
 
 @Component({
   selector: 'ba-page-top',
@@ -9,13 +10,21 @@ import {GlobalState} from '../../../global.state';
 })
 export class BaPageTop {
 
-  public isScrolled:boolean = false;
-  public isMenuCollapsed:boolean = false;
+  public isScrolled: boolean = false;
+  public isMenuCollapsed: boolean = false;
 
-  constructor(private _state:GlobalState) {
+  constructor(private _state: GlobalState,
+    private authService: AuthService,
+    private router: Router, ) {
     this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
       this.isMenuCollapsed = isCollapsed;
     });
+  }
+
+  public signOut(){
+    this.authService.logout();
+    this.router.navigate(['/login']);
+    
   }
 
   public toggleMenu() {

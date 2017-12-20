@@ -8,6 +8,7 @@ import { Login } from './login.component';
 import { routing }       from './login.routing';
 
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,7 +16,8 @@ import { routing }       from './login.routing';
     ReactiveFormsModule,
     FormsModule,
     NgaModule,
-    routing
+    routing,
+    
   ],
   declarations: [
     Login

@@ -1,33 +1,43 @@
-import {Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login',
   templateUrl: './login.html',
   styleUrls: ['./login.scss']
 })
-export class Login {a65cdt987ftt4f
 
-  public form:FormGroup;
-  public email:AbstractControl;
-  public password:AbstractControl;
-  public submitted:boolean = false;
 
-  constructor(fb:FormBuilder) {
-    this.form = fb.group({
-      'email': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
-      'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
-    });
+export class Login implements OnInit {
+  email: String;
+  password: String;
 
-    this.email = this.form.controls['email'];
-    this.password = this.form.controls['password'];
+  constructor(
+    private authService:AuthService,
+    private router:Router,
+    
+  ) { }
+
+  ngOnInit() {
   }
 
-  public onSubmit(values:Object):void {
-    this.submitted = true;
-    if (this.form.valid) {
-      // your code goes here
-      // console.log(values);
+  onLoginSubmit(){
+    const user = {
+      email: this.email,
+      password: this.password
     }
+
+    this.authService.authenticateUser(user).subscribe(data => {
+      if(data.success){
+        this.authService.storeUserData(data.token, data.user);
+        console.log(data.token);
+        this.router.navigate(['/pages/dashboard']);
+      }else {
+        this.router.navigate(['/login']);
+        this.password = '';
+      }
+    });
   }
 }

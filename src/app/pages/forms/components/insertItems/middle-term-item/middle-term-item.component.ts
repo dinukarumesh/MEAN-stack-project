@@ -27,6 +27,7 @@ export class MiddleTermItem implements OnInit {
   itemWarehouse: string;
   itemDescription: string;
   itemDate: Date;
+  userRole:string;
   
   constructor(
     private flashMessage:FlashMessagesModule,
@@ -36,6 +37,8 @@ export class MiddleTermItem implements OnInit {
 
   ngOnInit() {
     this.itemDate = new Date();
+    var user = JSON.parse(localStorage.getItem('user'));
+    this.userRole = user.userRole;
   }
 
   isRegistrationFailed: boolean = false;

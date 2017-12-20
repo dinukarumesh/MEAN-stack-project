@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from './services/auth.service';
+import { InsertItemsService } from './services/insert-items.service';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -53,7 +55,9 @@ export type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     APP_PROVIDERS,
-    ReportItemService
+    ReportItemService,
+    AuthService,
+    InsertItemsService
   ]
 })
 

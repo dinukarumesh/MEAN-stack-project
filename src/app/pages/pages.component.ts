@@ -4,6 +4,9 @@ import { Routes } from '@angular/router';
 import { BaMenuService } from '../theme';
 import { PAGES_MENU } from './pages.menu';
 
+import {AuthService} from '../services/auth.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'pages',
   template: `
@@ -21,10 +24,17 @@ import { PAGES_MENU } from './pages.menu';
 })
 export class Pages {
 
-  constructor(private _menuService: BaMenuService,) {
+  constructor(
+    private _menuService: BaMenuService, 
+    private authService:AuthService,
+    private router:Router,) {
   }
 
   ngOnInit() {
-    this._menuService.updateMenuByRoutes(<Routes>PAGES_MENU);
+    if(!this.authService.loggedIn()){
+      this._menuService.updateMenuByRoutes(<Routes>PAGES_MENU);
+    }else{
+      this.router.navigate(['/login']);
+    }
   }
 }

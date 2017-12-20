@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {EmailValidator, EqualPasswordsValidator} from '../../theme/validators';
+import { Router } from '@angular/router';
+import {AuthService} from '../../services/auth.service';
+import { ValidateService } from '../../services/validate.service';
 
 @Component({
   selector: 'register',
@@ -9,38 +12,50 @@ import {EmailValidator, EqualPasswordsValidator} from '../../theme/validators';
 })
 export class Register {
 
-  public form:FormGroup;
-  public name:AbstractControl;
-  public email:AbstractControl;
-  public password:AbstractControl;
-  public repeatPassword:AbstractControl;
-  public passwords:FormGroup;
+  public employeeId: string;
+  public username:string;
+  public email:string;
+  public password:string;
+  public userRole:string;
+ 
 
-  public submitted:boolean = false;
+  constructor(
+    private authService: AuthService,
+    private validateService: ValidateService, 
+    private router: Router) { }
 
-  constructor(fb:FormBuilder) {
-
-    this.form = fb.group({
-      'name': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
-      'email': ['', Validators.compose([Validators.required, EmailValidator.validate])],
-      'passwords': fb.group({
-        'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
-        'repeatPassword': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
-      }, {validator: EqualPasswordsValidator.validate('password', 'repeatPassword')})
-    });
-
-    this.name = this.form.controls['name'];
-    this.email = this.form.controls['email'];
-    this.passwords = <FormGroup> this.form.controls['passwords'];
-    this.password = this.passwords.controls['password'];
-    this.repeatPassword = this.passwords.controls['repeatPassword'];
-  }
-
-  public onSubmit(values:Object):void {
-    this.submitted = true;
-    if (this.form.valid) {
-      // your code goes here
-      // console.log(values);
+    onRegisterSubmit(){
+      const user = {
+        employeeId: this.employeeId,
+        username: this.username,
+        email: this.email,
+        password: this.password,
+        userRole: "employee"
+  
+      }
+  
+      // Required Fields
+      if(!this.validateService.validateRegister(user)){
+        this.password = "";
+        return false;
+      }
+  
+      // Required Fields
+      if(!this.validateService.validateEmail(user.email)){
+        this.email = "";
+        this.password = "";
+        return false;
+      }
+  
+      // Register user
+      this.authService.registerUser(user).subscribe(data => {
+        if(data.success){
+          this.router.navigate(['/login']);
+        } else {
+          this.router.navigate(['/register']);
+        }
+      });
     }
+  
   }
-}
+  

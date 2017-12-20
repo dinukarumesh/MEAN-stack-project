@@ -21,6 +21,7 @@ export class LongTermItem implements OnInit {
   warrantyQuantity: string;
   itemWarehouse : string;
   itemDescription : string;  
+  userRole:string;
   
   constructor(
     //  private flashMessage:FlashMessagesService,
@@ -30,6 +31,8 @@ export class LongTermItem implements OnInit {
 
   ngOnInit() {
     this.itemDate = new Date();
+    var user = JSON.parse(localStorage.getItem('user'));
+    this.userRole = user.userRole;
   }
 
   onLongTermItemSubmit(){

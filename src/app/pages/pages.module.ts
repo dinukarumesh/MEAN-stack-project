@@ -23,7 +23,9 @@ import { AvailabilityComponent } from './item-allocation/availability/availabili
 import { NotificationComponent } from './notification/notification.component';
 import { MiddleTermTermComponent } from './notification/middle-term-term/middle-term-term.component';
 
-
+import { Dashboard } from './dashboard/dashboard.component';
+import { Register } from './register/register.component';
+import { Login } from './login/login.component';
 
 @NgModule({
   imports: [
