@@ -6,13 +6,13 @@ import {BaThemeConfigProvider, colorHelper} from '../../../theme';
 import { ReportsService} from '../../../services/reports.service';
 
 @Component({
-  selector: 'traffic-chart',
-  templateUrl: './trafficChart.html',
-  styleUrls: ['./trafficChart.scss']
+  selector: 'all-chart',
+  templateUrl: './allChart.html',
+  styleUrls: ['./allChart.scss']
 })
 
 // TODO: move chart.js to it's own component
-export class TrafficChart implements OnInit{
+export class AllChart implements OnInit{
   dashboardColors;
   public doughnutData: Array<Object>;
 
@@ -23,12 +23,12 @@ export class TrafficChart implements OnInit{
 
   ngOnInit(){
     let chartData:any=[];
-    let colors=["#ABD9F9","#5481EA","#1353C4","#1741E9"];
-    //console.log("dfsdfdsfdsfdsfsdfsdfsdfdsfsdf");
-    this.reportsService.getDefectItemCount().subscribe(data=>{
+    let colors=["#8e5ea2","#3cba9f","#e8c3b9"];
+
+    this.reportsService.getAllItemCount().subscribe(data=>{
       this.doughnutData=[];
       let itemList =data.item;
-
+      console.log("fffffff");
       for(let a=0;a<itemList.length;a++){
         //var val=
 
@@ -44,7 +44,7 @@ export class TrafficChart implements OnInit{
 
       }
 
-      //console.log(chartData);
+      console.log(chartData);
       this.doughnutData=chartData;
       this._loadDoughnutCharts();
     });
@@ -55,7 +55,7 @@ export class TrafficChart implements OnInit{
   }
 
   private _loadDoughnutCharts() {
-    let el = jQuery('.chart-area').get(0) as HTMLCanvasElement;
+    let el = jQuery('.chart-area2').get(0) as HTMLCanvasElement;
     new Chart(el.getContext('2d')).Doughnut(this.doughnutData, {
       segmentShowStroke: false,
       percentageInnerCutout : 64,

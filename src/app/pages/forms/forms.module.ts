@@ -32,6 +32,7 @@ import { WithoutLabelsForm } from './components/layouts/components/withoutLabels
 
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { FlashMessagesModule  } from 'angular2-flash-messages';
+import { SetRoleComponent } from './components/set-role/set-role.component';
 
 
 
@@ -66,7 +67,8 @@ import { FlashMessagesModule  } from 'angular2-flash-messages';
     BlockForm,
     HorizontalForm,
     BasicForm,
-    WithoutLabelsForm
+    WithoutLabelsForm,
+    SetRoleComponent
   ]
 })
 export class FormsModule {

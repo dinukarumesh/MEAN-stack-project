@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 
 @Injectable()
-export class ReportItemService {
+export class ReportItemService { 
  reportitem:any;
   constructor(
     private http:Http
@@ -22,7 +22,7 @@ export class ReportItemService {
     console.log(body);
     return this.http.post("http://localhost:3000/reportItem/showReportItem",body,{headers:headers}).map(res=>res.json());
   }
-  
+
 }
 
 

@@ -8,14 +8,16 @@
     <input id="searchInput" type="text" placeholder="Search for...">
   </div>
 
-  
+
   <div class="user-profile clearfix">
     <div class="dropdown al-user-profile">
       <a class="profile-toggle-link dropdown-toggle" id="user-profile-dd" data-toggle="dropdown" aria-expanded="false">
-        <img src="{{ ( 'Nasta' | baProfilePicture ) }}">
+        <img  src="data:image/PNG;base64,{{url.photodata}}">
+
+
       </a>
       <ul class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="user-profile-dd">
-        <li class="dropdown-item"><a href><i class="fa fa-user"></i>Profile</a></li>
+        <li class="dropdown-item"><a routerLink="/pages/profile"><i class="fa fa-user"></i>Profile</a></li>
         <li class="dropdown-item"><a href><i class="fa fa-cog"></i>Settings</a></li>
         <li class="dropdown-item"><a role="button" (click)="signOut()"><i class="fa fa-power-off"></i>Sign out</a></li>
       </ul>

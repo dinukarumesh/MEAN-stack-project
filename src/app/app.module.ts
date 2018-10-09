@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './services/auth.service';
 import { InsertItemsService } from './services/insert-items.service';
+import { ReportsService } from './services/reports.service';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -56,7 +57,8 @@ export type StoreType = {
     APP_PROVIDERS,
    // ReportItemService,
     AuthService,
-    InsertItemsService
+    InsertItemsService,
+    ReportsService
   ]
 })
 
